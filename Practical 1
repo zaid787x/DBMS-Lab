@@ -12,3 +12,17 @@ commit; or exit
 
 alter user a2 account unlock;
 (login as system, then unlock user)
+
+create table p_info (id int, name varchar(50), contact int, desg varchar(50));
+OUTPUT: Table created.
+
+select * from tab;
+(to check number of tables present in database) 
+
+select * from p_info;
+OUTPUT: no rows selected
+
+insert into p_info values (24070521043, Zaid, 9096521319, Student);
+OUTPUT: error "column not allowed here"
+  insert into p_info values (24070521043, 'Zaid', 9096521319, 'Student');
+  OUTPUT: 1 row created
