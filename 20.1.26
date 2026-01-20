@@ -1,5 +1,39 @@
 1. Create a table st_info with PRN, ST_NAME, M1, M2, M3
   create table st_info (prn int, name varchar2(50), m1 number, m2 number, m3 number);
+  alter table st_info modify prn int;
 
 2. Insert atleast 7 rows in the table
-  insert into
+  insert into st_info values (1043, 'Mohammed Zaid Shaikh', 74, 75, 74);
+select * from tab; ------> This command will display no. of tables present in database for user
+select * from st_info; ------> This command will display no. of rows present in table st_info
+
+3. Add columns total and percentage to the table
+  alter table st_info add (total number, percentage number);
+  insert into st_info values (1043, 'Mohammed Zaid Shaikh', 74, 75, 74); ------> ERROR: not enough values
+
+  insert into st_info(prn, name, m1, m2, m3) values (1043, 'Mohammed Zaid Shaikh', 74, 75, 74);
+  insert into st_info values (1043, 'Mohammed Zaid Shaikh', 74, 75, 74, null, null);
+
+4. Calculate and update total and percentage
+  update st_info set total = m1+m2+m3;
+  update st_info set percentage = total/3;
+
+5. CREATE A TABLE emp WITH emp_id, name,basic
+    create table emp (emp_id int, name varchar2(25), basic number);
+
+  5.1 Insert 10 rows
+    insert into emp values (1043, 'Mohammed Zaid Shaikh', 45000);
+  5.2 Add hra, da, total
+    alter table emp add(hra number, da number, total number);
+  5.3 Compute hra as 7.5% of basic
+    update emp set hra = 0.075 * basic;
+  5.4 Compute da as 150% of basic
+    update emp set da = 1.5 * basic;
+  5.5 Compute total
+    update emp set total = hra + da;
+  5.6 Add dedu, take_home
+    alter table emp add(dedu number, take_home number);
+  5.7 Compute dedu as 12% of total
+    update emp set dedu = 0.12 * basic;
+  5.8 Compute take_home as difference between dedu and total
+    update emp set take_home = total - dedu;
