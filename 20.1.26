@@ -1,0 +1,5 @@
+1. Create a table st_info with PRN, ST_NAME, M1, M2, M3
+  create table st_info (prn int, name varchar2(50), m1 number, m2 number, m3 number);
+
+2. Insert atleast 7 rows in the table
+  insert into
