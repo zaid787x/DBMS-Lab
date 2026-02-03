@@ -1,0 +1,26 @@
+  1. TO FIND INSTRUCTORS OF COMPUTER SCIENCE
+select * from instructor where dept_id=(select dept_id from department where name='Computer Science'); 
+
+  1. FIND THE AVERAGE SALARY OF INSTRUCTORS IN COMPUTER SCIENCE DEPARTMENT
+select avg(salary) as avg_salary from instructor where dept_id=(select dept_id from department where name='Computer Science');
+
+  USING JOINS
+select avg(I.salary) as avg_salary from instructor I join department D on i.dept_id=d.dept_id where d.name='Computer Science';
+
+  2. FIND THE AVERAGE SALARY IN EACH DEPARTMENT
+select d.name as d_name, avg(i.salary) from department d join instructor i on d.dept_id=i.dept_id group by d.name;
+
+  3. WHAT IS THE TOTAL SALARY OF ALL TEACHERS EARNING MORE THAN 30K
+select sum(salary) from instructor where salary > 30000;
+
+  4. LIST TOTAL NO. OF STUDENTS ENROLLED IN EACH COURSE
+select c.course_id, c.title count(e.student_id) as enrolled_students from course c left join section s on c.course_id=s.course_id left join enrollment e on s.section+id=e.section_id group by c.course_id,c.title order by c.course_id;
+
+  5. FIND THE NAME OF ALL DEPARTMENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
+select * from department where lower(building) like '%on%';
+
+  6. FIND THE NAME OF STUDENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
+select * from department where lower(building) like '%on%';
+
+  7. DISPLAY NAME OF ALL STUDENTS
+select name, length(name) as namelength from student;
