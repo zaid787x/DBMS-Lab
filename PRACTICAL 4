@@ -1,0 +1,11 @@
+  a. DISPLAY ALL EMPLOYEE NAMES THAT STARTS WITH A AND ARE ATLEAST 3 CHARACTERS IN LENGTH
+select first_name from emp where lower(first_name) like 'a%' and length(first_name)>=3;
+
+  b. DISPLAY DEPARTMENTS LOCATED AT DALLAS, NEWYORK AND CHICAGO
+select dept_name from departments where lower(location) like 'da%' or lower(location) like 'new%' or lower(location) like 'chi%';
+
+  c. DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING AS CLERK, SALESMAN OR ANALYST AND DRAWING A SALARY MORE THAN 3000
+select first_name,job,salary from emp where (lower(job) = 'clerk' or lower(job) = 'salesman' or lower(job) = 'analyst') and salary>3000;
+
+  d. DISPLAY THE NAME OF EMPLOYEES WHO ARE NOT WORKING AS MANAGERS
+select first_name,last_name from emp where lower(job)!='manager';
