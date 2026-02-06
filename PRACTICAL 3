@@ -1,26 +1,48 @@
   1. TO FIND INSTRUCTORS OF COMPUTER SCIENCE
 select * from instructor where dept_id=(select dept_id from department where name='Computer Science'); 
 
-  1. FIND THE AVERAGE SALARY OF INSTRUCTORS IN COMPUTER SCIENCE DEPARTMENT
+  a. FIND THE AVERAGE SALARY OF INSTRUCTORS IN COMPUTER SCIENCE DEPARTMENT
 select avg(salary) as avg_salary from instructor where dept_id=(select dept_id from department where name='Computer Science');
 
   USING JOINS
 select avg(I.salary) as avg_salary from instructor I join department D on i.dept_id=d.dept_id where d.name='Computer Science';
 
-  2. FIND THE AVERAGE SALARY IN EACH DEPARTMENT
+  b. FIND THE AVERAGE SALARY IN EACH DEPARTMENT
 select d.name as d_name, avg(i.salary) from department d join instructor i on d.dept_id=i.dept_id group by d.name;
 
-  3. WHAT IS THE TOTAL SALARY OF ALL TEACHERS EARNING MORE THAN 30K
+  c. WHAT IS THE TOTAL SALARY OF ALL TEACHERS EARNING MORE THAN 30K
 select sum(salary) from instructor where salary > 30000;
 
-  4. LIST TOTAL NO. OF STUDENTS ENROLLED IN EACH COURSE
+  d. LIST TOTAL NO. OF STUDENTS ENROLLED IN EACH COURSE
 select c.course_id, c.title count(e.student_id) as enrolled_students from course c left join section s on c.course_id=s.course_id left join enrollment e on s.section+id=e.section_id group by c.course_id,c.title order by c.course_id;
 
-  5. FIND THE NAME OF ALL DEPARTMENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
+  e. FIND THE NAME OF ALL DEPARTMENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
 select * from department where lower(building) like '%on%';
 
-  6. FIND THE NAME OF STUDENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
+  f. FIND THE NAME OF STUDENTS WHOSE BUILDING NAME INCLUDE THE SUBSTRING "ON"
 select * from department where lower(building) like '%on%';
 
-  7. DISPLAY NAME OF ALL STUDENTS
+  g. DISPLAY NAME OF ALL STUDENTS
 select name, length(name) as namelength from student;
+
+  h. RETRIEVE TOTAL NUMBER OF INSTRUCTIONS
+GG
+
+  i. DISPLAY NAME OF INSTRUCTORS WORKING FOR THE PAST 5 YEARS
+select name from instructor where hiredate<add_months(sysdate, -60);
+
+  j. DISPLAY THE LIST OF INSTRUCTOR WHO HAVE JOINED BEFORE 1ST JAN 2021 OR AFTER 31ST JUNE 2021
+select name from instructor where hiredate>= date '01-jan-2021' and hiredate<= date '30-jun-2021';
+
+  k. DISPLAY NAME OF THOSE INSTRUCTORS WHO ARE GOING TO RETIRE 01-JAN-2024 IF THE MAXIMUM JOB PERIOD IS 3 YEARS
+
+  l. DISPLAY THOSE INSTRUCTORS WHOSE SALARY CONTAINS ATLEAST 4 DIGITS
+select name,salary from instructor where length(SALARY)>=4;
+
+  m. PRINT A LIST OF INSTRUCTORS DISPLAYING LESS SALARY IF LESS THAN 72000, EXACT SALARY IF EQUAL TO 72000, MORE SALARY IF GREATER THAN 72000
+select name,salary from instructor case(when salary<72000 then 'LESS SALARY', when salary=72000 then 'EXACT SALARY', else 'MORE SALARY');
+SELECT NAME,
+CASE
+WHEN Salary<72000 then 'LESS SALARY'
+WHEN Salary=72000 then 'EQUAL SALARY'
+ELSE 'MORE SALARY'
