@@ -1,11 +1,25 @@
-  a. DISPLAY ALL EMPLOYEE NAMES THAT STARTS WITH A AND ARE ATLEAST 3 CHARACTERS IN LENGTH
+  1. DISPLAY ALL EMPLOYEE NAMES THAT STARTS WITH A AND ARE ATLEAST 3 CHARACTERS IN LENGTH
 select first_name from emp where lower(first_name) like 'a%' and length(first_name)>=3;
 
-  b. DISPLAY DEPARTMENTS LOCATED AT DALLAS, NEWYORK AND CHICAGO
+  2. DISPLAY DEPARTMENTS LOCATED AT DALLAS, NEWYORK AND CHICAGO
 select dept_name from departments where lower(location) like 'da%' or lower(location) like 'new%' or lower(location) like 'chi%';
 
-  c. DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING AS CLERK, SALESMAN OR ANALYST AND DRAWING A SALARY MORE THAN 3000
+  3. DISPLAY THE NAMES OF EMPLOYEES WHO ARE WORKING AS CLERK, SALESMAN OR ANALYST AND DRAWING A SALARY MORE THAN 3000
 select first_name,job,salary from emp where (lower(job) = 'clerk' or lower(job) = 'salesman' or lower(job) = 'analyst') and salary>3000;
 
-  d. DISPLAY THE NAME OF EMPLOYEES WHO ARE NOT WORKING AS MANAGERS
+  4. DISPLAY THE NAME OF EMPLOYEES WHO ARE NOT WORKING AS MANAGERS
 select first_name,last_name from emp where lower(job)!='manager';
+
+  5. DISPLAY NAME OF EMP WHO EARNS HIGHEST SALARY
+select first_name, salary from emp where salary=(select max(salary) from emp);
+
+  6. DISPLAY THE EMP NO. AND NAME OF EMP WORKING AS CLERK AND EARNING HIGHEST SALARY AMONG CLERKS
+select first_name,job,salary from emp where salary=(select max(salary) from emp where job = 'CLERK');
+
+  7. DISPLAY NAME OF CLERKS WHO EARN SALARY LESS THAN THAT OF JAMES AND MORE THAN THAT OF BOB
+select first_name from emp where job='CLERK' and salary>(select salary from emp where lower(first_name) = 'bob') and salary<(select salary from emp where lower(first_name) = 'james');
+
+  8. DISPLAY THE NAME OF EMPLOYEES WHO EARN HIGHEST SALARY IN THEIR RESPECTIVE DEPARTMENT
+select e.deptno, d.dept_name, e.first_name, e.salary from emp e join departments d on e.deptno = d.deptno where e.salary = (select max(salary) from emp where deptno=e.deptno);
+
+  9. DISPLAY THOSE EMPLOYEES WHO ARE WORKING IN THE DEPT WHERE THEIR MANAGER IS WORKING
