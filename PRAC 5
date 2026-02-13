@@ -1,0 +1,4 @@
+INSERT INTO Departments (dept_id, dept_name, location) VALUES (101, 'Finance', 'New York');
+INSERT INTO Departments (dept_id, dept_name, location) VALUES (102, 'HR', 'Chicago');
+INSERT INTO Departments (dept_id, dept_name, location) VALUES (103, 'IT', 'Dallas');
+INSERT INTO Departments (dept_id, dept_name, location) VALUES (104, 'Marketing', 'San Francisco');
