@@ -23,3 +23,4 @@ select first_name from emp where job='CLERK' and salary>(select salary from emp 
 select e.deptno, d.dept_name, e.first_name, e.salary from emp e join departments d on e.deptno = d.deptno where e.salary = (select max(salary) from emp where deptno=e.deptno);
 
   9. DISPLAY THOSE EMPLOYEES WHO ARE WORKING IN THE DEPT WHERE THEIR MANAGER IS WORKING
+select e.first_name from emp e join emp m on e.manager_id=m.emp_no where e.deptno=m.deptno;
