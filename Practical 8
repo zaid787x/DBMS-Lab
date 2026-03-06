@@ -1,0 +1,58 @@
+create or replace procedure subavgcase1 as
+    cs number := 45;
+    os number := 50;
+    dbms number := 75;
+    m3 number := 95;
+    total number;
+    per number(5,2);
+begin
+    total := cs + os + dbms + m3;
+    per := (total / 400) * 100;
+    if cs < 40 OR os < 40 OR dbms < 40 OR m3 < 40 then
+        DBMS_OUTPUT.PUT_LINE('FAIL');
+    else
+        if per > 75 then
+            DBMS_OUTPUT.PUT_LINE('GRADE A');
+        elsif per > 65 and per <= 75 then
+            DBMS_OUTPUT.PUT_LINE('GRADE B');
+        elsif per > 55 and per <= 65 then
+            DBMS_OUTPUT.PUT_LINE('GRADE C');
+        else
+            DBMS_OUTPUT.PUT_LINE('GRADE D');
+        end if;
+
+        DBMS_OUTPUT.PUT_LINE('Total Marks = ' || total);
+        DBMS_OUTPUT.PUT_LINE('Percentage = ' || per || '%');
+    end if;
+end;
+/
+
+
+create or replace procedure subavgcase2 as
+    cs number := 95;
+    os number := 75;
+    dbms number := 85;
+    m3 number := 50;
+    total number;
+    per number(5,2);
+begin
+    total := cs + os + dbms + m3;
+    per := (total / 400) * 100;
+    if cs < 40 OR os < 40 OR dbms < 40 OR m3 < 40 then
+        DBMS_OUTPUT.PUT_LINE('FAIL');
+    else
+        if per > 75 then
+            DBMS_OUTPUT.PUT_LINE('GRADE A');
+        elsif per > 65 and per <= 75 then
+            DBMS_OUTPUT.PUT_LINE('GRADE B');
+        elsif per > 55 and per <= 65 then
+            DBMS_OUTPUT.PUT_LINE('GRADE C');
+        else
+            DBMS_OUTPUT.PUT_LINE('GRADE D');
+        end if;
+
+        DBMS_OUTPUT.PUT_LINE('Total Marks = ' || total);
+        DBMS_OUTPUT.PUT_LINE('Percentage = ' || per || '%');
+    end if;
+end;
+/
