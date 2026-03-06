@@ -1,0 +1,115 @@
+To study Control loops in PL/SQL
+
+  i. Print first 10 numbers using while loop.
+create or replace procedure opop as
+  a number := 1;
+begin
+  while a<=10 loop
+    DBMS_OUTPUT.PUT_LINE(a);
+    a := a+1;
+  end loop;
+end;
+/
+
+
+  ii. Sum of first 10 numbers using while loop.
+create or replace procedure sum1to10 as
+  a number := 1;
+  r number := 0;
+begin
+  while a<=10 loop
+    DBMS_OUTPUT.PUT_LINE(a);
+    r := r+a;
+    a := a+1;
+  end loop;
+    DBMS_OUTPUT.PUT_LINE('Summation of above numbers : ' || r);
+end;
+/
+
+
+  iii. Sum of first N numbers using while loop.
+create or replace procedure sumn(n in number) as
+  a number := 1;
+  r number := 0;
+begin
+  while a<=n loop
+    DBMS_OUTPUT.PUT_LINE(a);
+    r := r+a;
+    a := a+1;
+  end loop;
+    DBMS_OUTPUT.PUT_LINE('Summation of above numbers : ' || r);
+end;
+/
+
+
+  iv. Print first 10 even numbers using while loop
+create or replace procedure evenwhile as
+  a number := 1;
+  e number;
+begin
+  while a<=10 loop
+    e := 2*a;
+    DBMS_OUTPUT.PUT_LINE(e);
+    a := a+1;
+  end loop;
+end;
+/
+
+
+
+
+  i. Print first 10 numbers using for loop.
+create or replace procedure print10for as
+begin
+  for a in 1..10 loop
+    DBMS_OUTPUT.PUT_LINE(a);
+  end loop;
+end;
+/
+
+
+  ii. Print first 10 even numbers using for loop.
+create or replace procedure even10for as
+begin
+  for a in 1..10 loop
+    DBMS_OUTPUT.PUT_LINE(2*a);
+  end loop;
+end;
+/
+
+
+  iii. Sum of first 10 numbers using for loop.
+create or replace procedure sum1to10for as
+  r number := 0;
+begin
+  for a in 1..10 loop
+    r := r+a;
+  end loop;
+    DBMS_OUTPUT.PUT_LINE('Summation of above numbers : ' || r);
+end;
+/
+
+
+  iv. Sum of first N numbers using while loop.
+create or replace procedure sumnfor(n in number) as
+  r number := 0;
+begin
+  for a in 1..n loop
+    DBMS_OUTPUT.PUT_LINE(a);
+    r := r+a;
+  end loop;
+    DBMS_OUTPUT.PUT_LINE('Summation of above numbers : ' || r);
+end;
+/
+
+
+  v. Sum of first 10 even numbers using for loop.
+create or replace procedure sum1to10evenfor as
+  r number := 0;
+begin
+  for a in 1..10 loop
+    r := r+(2*a);
+  end loop;
+    DBMS_OUTPUT.PUT_LINE('Summation of above numbers : ' || r);
+end;
+/
