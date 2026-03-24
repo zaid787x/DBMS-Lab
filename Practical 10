@@ -1,0 +1,17 @@
+CREATE OR REPLACE PROCEDURE exc1(n IN NUMBER)
+AS
+    Vname emp.FIRST_NAME%TYPE;
+    Vsalary emp.SALARY%TYPE;
+BEGIN
+    SELECT FIRST_NAME, SALARY
+    INTO Vname, Vsalary
+    FROM emp
+    WHERE EMP_NO = n;
+
+    DBMS_OUTPUT.PUT_LINE('Emp Name = ' || Vname);
+    DBMS_OUTPUT.PUT_LINE('Emp Salary = ' || Vsalary); 
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Emp id not found');
+END;
+/
