@@ -1,0 +1,27 @@
+STATEMENT LEVEL
+create or replace trigger st_tri
+  before update on st_info
+begin
+  dbms_output.put_line('This is statement level trigger get fired');
+end;
+/
+
+
+ROW LEVEL
+create or replace trigger row_tri
+  before update on st_info for each row
+begiN
+  dbms_output.put_line('This is row level trigger get fired');
+end;
+/
+
+
+CHECK VALID MARKS
+create or replace trigger tri_validmarks
+  before insert on st_info for each row
+begin
+  if (sub1<0 or sub1>100) or (sub2<0 or sub2>100) or (sub3<0 or sub3>100) or (sub4<0 or sub4>100) then
+    dbms_output.put_line('Enter valid marks for all subjects');
+  end if;
+end;
+/
